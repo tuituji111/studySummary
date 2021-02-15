@@ -3,13 +3,17 @@ import sun.misc.Contended;
 import java.util.concurrent.CountDownLatch;
 
 public class T_CacheLinePadding {
-    public  static long COUNT = 10_0000_0000L;
+    public static long COUNT = 10_0000_0000L;
 
-    @Contended //只有1.8起作用，保证x位于单独一个内存行中，运行时需要加参数：-XX:-RestrictContended，好像ADM的cpu也没起作用
+    //@Contended //只有1.8起作用，保证x位于单独一个内存行中，运行时需要加参数：-XX:-RestrictContended
     private static class T{
-        //private long p1,p2,p3,p4,p5,p6,p7;//在AMD的CPU上没起作用？
+        //private long p1,p2,p3,p4,p5,p6,p7;//一个内存行64个字节
+        //@Contended
         public long x = 0L;
         //private long p9,p10,p11,p12,p13,p14,p15;//
+        //@Contended
+        public long y = 0L;
+
     }
 
     public static T[] arr = new T[2];
@@ -32,7 +36,9 @@ public class T_CacheLinePadding {
 
         Thread t2 = new Thread(()->{
             for(long j=0;j<COUNT;j++){
-                arr[0].x = j;
+                arr[0].y = j;//此时在一个内存行上的概率较高
+                //arr[1].y = j;//此时在一个内存行上的概率很低
+                //arr[0].x = j;//此时不管怎么优化，貌似始终在一个内存行上
             }
 
             latch.countDown();
