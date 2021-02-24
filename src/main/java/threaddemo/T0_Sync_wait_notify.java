@@ -1,17 +1,10 @@
-package threadDemo;
-
-import java.util.concurrent.CountDownLatch;
+package threaddemo;
 
 /**
- * 这里可以控制哪个线程先执行
+ * 这里没法控制哪个线程先执行
  */
 
-public class T1_Sync_wait_notify {
-
-    // 用开关和CountDownLatch都可以实现控制
-    //private static volatile boolean t2Started = false;
-    private static CountDownLatch latch = new CountDownLatch(1);
-
+public class T0_Sync_wait_notify {
     public static void main(String[] args){
         final Object o = new Object();
 
@@ -19,24 +12,7 @@ public class T1_Sync_wait_notify {
         char[] aC = "ABCDEFG".toCharArray();
 
         new Thread(() -> {
-            //后开始的执行await
-            try {
-                latch.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
             synchronized (o){
-
-                // 后开始的加这一个while判断
-                /*while (!t2Started){
-                    try {
-                        o.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }*/
-
                 for(char c : aI){
                     System.out.print(c);
                     try {
@@ -55,8 +31,6 @@ public class T1_Sync_wait_notify {
             synchronized (o){
                 for(char c : aC){
                     System.out.print(c);
-                    latch.countDown(); // 先开始的执行countDown
-                    //t2Started = true;// 先开始的打开轮训开关
                     try {
                         o.notify();
                         o.wait(); //这里两行不能交换位置，等待之后就无法唤醒其他线程了

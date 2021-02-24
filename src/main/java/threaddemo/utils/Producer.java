@@ -1,6 +1,6 @@
-package threadDemo.utils;
+package threaddemo.utils;
 
-import threadDemo.T_P_C;
+import threaddemo.T_P_C;
 
 public class Producer implements Runnable{
     private T_P_C box = null;

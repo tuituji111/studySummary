@@ -1,6 +1,4 @@
-package threadDemo;
-
-import sun.misc.Contended;
+package threaddemo;
 
 import java.util.concurrent.CountDownLatch;
 

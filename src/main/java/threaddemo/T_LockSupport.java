@@ -1,4 +1,4 @@
-package threadDemo;
+package threaddemo;
 
 import java.util.concurrent.locks.LockSupport;
 

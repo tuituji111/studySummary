@@ -1,4 +1,4 @@
-package threadDemo;
+package threaddemo;
 
 public class T_Mgr {
     //private static threadDemo.T_Mgr INSTANCE = new threadDemo.T_Mgr();//不管用不用就直接new一个对象，比较浪费空间资源

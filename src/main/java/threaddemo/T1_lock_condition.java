@@ -1,4 +1,4 @@
-package threadDemo;
+package threaddemo;
 
 /**
  * 多个condition，将生产者和消费者分别放到不同的队列中进行等待，

@@ -1,4 +1,4 @@
-package threadDemo.utils;
+package threaddemo.utils;
 
 public class Wotou {
     public int id;

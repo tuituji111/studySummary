@@ -1,4 +1,4 @@
-package threadDemo;
+package threaddemo;
 
 /**
  * 自旋锁，空转

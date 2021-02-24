@@ -1,8 +1,8 @@
-package threadDemo;
+package threaddemo;
 
-import threadDemo.utils.Consumer;
-import threadDemo.utils.Producer;
-import threadDemo.utils.Wotou;
+import threaddemo.utils.Consumer;
+import threaddemo.utils.Producer;
+import threaddemo.utils.Wotou;
 
 public class T_P_C {
     private int index = 0;

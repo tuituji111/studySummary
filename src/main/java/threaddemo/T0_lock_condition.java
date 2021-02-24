@@ -1,4 +1,4 @@
-package threadDemo;
+package threaddemo;
 
 /**
  * 一个condition
